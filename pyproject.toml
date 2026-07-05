@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "cython", "numpy", "scipy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pybaw"
+version = "1.0.0"
+description = "Barone-Adesi-Whaley (1987) American option pricing and implied volatility (Cython)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = ["numpy", "scipy"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["pybaw"]
