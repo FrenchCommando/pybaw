@@ -15,11 +15,17 @@ extension: `nogil` scalar loops with scipy's Cython `brentq` doing the root solv
 
 ## Install
 
-The compiled extension is required — there is no pure-Python fallback. You need a
-C compiler plus `numpy`, `scipy`, `cython` (scipy is needed at **build** time too:
-the extension cimports `scipy.optimize.cython_optimize`).
+```
+pip install pybaw
+```
 
-Either install:
+Prebuilt wheels cover CPython 3.11+ on Linux (x86_64, aarch64), Windows (x86_64),
+and macOS (arm64, x86_64). On anything else pip falls back to the sdist, which
+needs a C compiler — the compiled extension is required, there is no pure-Python
+fallback. Note scipy is needed at **build** time too, not just runtime: the
+extension cimports `scipy.optimize.cython_optimize`.
+
+To work on the package itself, either install from a checkout:
 
 ```
 pip install .
@@ -51,3 +57,7 @@ put implied vols near the money removes that bias.
 pip install -e .[test]
 pytest
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

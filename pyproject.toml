@@ -7,7 +7,9 @@ name = "pybaw"
 version = "1.0.0"
 description = "Barone-Adesi-Whaley (1987) American option pricing and implied volatility (Cython)"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Martial Ren" }]
 requires-python = ">=3.11"
 dependencies = ["numpy", "scipy"]
 
@@ -16,3 +18,13 @@ test = ["pytest"]
 
 [tool.setuptools]
 packages = ["pybaw"]
+
+[tool.cibuildwheel]
+# numpy/scipy don't ship wheels for musllinux, 32-bit, or PyPy targets
+skip = ["*-musllinux*", "*_i686", "*-win32", "pp*"]
+test-requires = ["pytest"]
+test-command = "pytest {project}/tests"
+
+[tool.cibuildwheel.macos]
+# x86_64 is cross-compiled from the arm64 runner; its tests are skipped
+archs = ["arm64", "x86_64"]
